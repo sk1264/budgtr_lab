@@ -1,6 +1,8 @@
 const express = require('express');
 const app = express();
 
+app.use(express.static('public'));
+
 // Index route
 app.get('/', (req, res) => {
   res.send('Hello, world!');
@@ -9,9 +11,6 @@ app.get('/', (req, res) => {
 app.get('/budgets', (req, res) => {
   res.send('this is my budgets');
 });
-
-// Middleware?
-// app.set('view engine', 'ejs')
 
 // Show route
 
@@ -26,7 +25,8 @@ app.get('/budgets/:new', (req,res) => {
 });
 
 // Create route
-
+app.post('/budgets', (req, res) => {
+})
 
 // Update route
 
