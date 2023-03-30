@@ -1,7 +1,9 @@
 const express = require('express');
 const app = express();
-const budget =('./models/budget');
+const budget = require('./models/budget');
+const bodyParser = require('body-parser');
 
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static('public'));
 app.set('view engine', 'ejs');
 app.use(express.urlencoded({ extended:false }));
@@ -10,24 +12,19 @@ app.get('/budgets', (req, res) => {
   res.render('index.ejs', {budget});
 });
 
-// Show route
 app.get('/budgets/:index', (req,res) => {
   const budgetItem = budget[req.params.index]
-  res.render('show.ejs',{budgetItem});
+  res.render('new.ejs',{budgetItem});
 });
 
-// New route
-
-app.get('/budgets/new', (req,res) => {
-  res.render('new.ejs');
-});
-
-// Create route
-app.post('/budgets', (req, res) => {
+app.get('/budgets/new', (req, res) => {
+  res.render('new.ejs')
 })
 
-
-// Destroy route
+app.post('/budgets', (req, res) => {
+  budget.unshift(req.body);
+  res.redirect('/budgets')
+});
 
 app.listen(3000, () => {
   console.log('Server listening on port 3000');

@@ -8,18 +8,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Budgtr Lab</title>
 </head>
+<% let bankAccount = 0; %>
+<% bankAccount = 0 %>
 <body>
     <h1>Budgtr ALL</h1>
-    <% for (let i = 0; i < budget.length; i++) { %>
     <div class = 'container'>
-        <table>
-            <td><%= budget[i].date %></td>
-            <td><a href="/budgets/<%= i %>"><%= budget[i].name %></a></td>
-            <td><%= budget[i].from %></td>
-            <td><%= budget[i].amount %></td>
-        </table>
+        <a href="/budgets/new"><button>New Item</button></a>
+        <% for(let i = 0; i < budget.length; i++) { %>
+            <% bankAccount = bankAccount + budget[i].amount %>
+            <table>
+            <tr>
+              <td><%= budget[i].date %></td>
+              <td><a href="/budget/<%= i %>"><%= budget[i].name %></a></td>
+              <td></%= budget[i].from %></td>
+              <td> <%= budget[i].amount %></td>
+            </tr>
+            </table>
         <% } %>
     </div>
-    <a href="/budgets/new"><button>Create new input field</button>
 </body>
 </html>
