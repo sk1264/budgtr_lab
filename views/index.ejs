@@ -10,12 +10,16 @@
 </head>
 <body>
     <h1>Budgtr ALL</h1>
+    <% for (let i = 0; i < budget.length; i++) { %>
     <div class = 'container'>
         <table>
-            <tr>
-                <td></td>
-            </tr>
+            <td><%= budget[i].date %></td>
+            <td><a href="/budgets/<%= i %>"><%= budget[i].name %></a></td>
+            <td><%= budget[i].from %></td>
+            <td><%= budget[i].amount %></td>
         </table>
+        <% } %>
     </div>
+    <a href="/budgets/new"><button>Create new input field</button>
 </body>
 </html>
