@@ -1,15 +1,17 @@
 const express = require('express');
 const app = express();
+const budget =('./models/budget');
 
 app.use(express.static('public'));
+app.set('view engine', 'ejs');
 
 // Index route
 app.get('/', (req, res) => {
-  res.send('Hello, world!');
+  res.send('Hello Adult Life');
 });
 
 app.get('/budgets', (req, res) => {
-  res.send('this is my budgets');
+  res.render('index.ejs', {budget});
 });
 
 // Show route
